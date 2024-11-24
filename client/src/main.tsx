@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { Auth0ProviderWithHistory } from './auth/Auth0Provider';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import './index.css'; // This will apply Tailwind globally
 
-import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
+
+    <Provider store={store}>
     <Router>
       <Auth0ProviderWithHistory>
         <App />
       </Auth0ProviderWithHistory>
     </Router>
+    </Provider>
+   
   </React.StrictMode>
 );

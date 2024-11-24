@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-
+import { User } from "../models/users"; // Import explicitly
+import { Note } from "../models/notes"; // Import explicitly
 const connectDB = async () => {
     const uri = process.env.MONGO_URI;
     if (!uri) {
