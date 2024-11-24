@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import NoteList from './noteList';
 import EditorToolbar from './editorToolbar';
 import { Note } from '../../types';
+import { ChatContainer } from '../chatBot/chatContainer';
+import ChatToggleButton from '../chatBot/chatToggleButton';
 
 
 
@@ -19,6 +21,12 @@ const Editor = () => {
     }
   }, [isAuthenticated, user]);
 
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
+
   const handleNoteChange = (newContent: string) => {
     if (currentNote) {
       currentNote.content = newContent;
@@ -28,6 +36,26 @@ const Editor = () => {
   };
 
   return (
+    <>
+
+<div className="relative">
+    <ChatToggleButton onClick={toggleChat} />
+    
+    {isChatOpen && (
+      <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
+        <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full h-[600px]">
+          <ChatContainer />
+          <button
+            onClick={toggleChat}
+            className="absolute top-4 right-4 text-white text-lg"
+          >
+            X
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
+
     <div className="editor-container flex h-screen">
     <div className="notes-list w-1/4 p-4 bg-gray-100">
       <NoteList />
@@ -45,6 +73,10 @@ const Editor = () => {
     </div>
   </div>
   
+
+    </>
+
+    
   );
 };
 
