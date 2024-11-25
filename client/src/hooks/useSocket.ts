@@ -10,6 +10,8 @@ export const useSocket = () => {
     setSocket(socketInstance);
 
     socketInstance.on('connect', () => {
+      console.log('socket connected');
+      
       setIsConnected(true);
     });
 

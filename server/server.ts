@@ -1,7 +1,8 @@
 import http from "http";
 import { Server } from "socket.io";
 import app from "./app";
-import { setupSocketHandlers } from "./sockets/socketHandler";
+// import { setupSocketHandlers } from "./sockets/socketHandler";
+import { setupSocket } from "./sockets/socketManager";
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +18,9 @@ const io = new Server(server, {
 });
 
 // Setup Socket Handlers
-setupSocketHandlers(io);
+setupSocket(io);
+// setupSocketHandlers(io);
+
 
 // Start the HTTP server
 server.listen(PORT, () => {

@@ -28,12 +28,12 @@ export const fetchNotes = createAsyncThunk<Note[], string>(
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        withCredentials: true, // Include cookies for cross-origin requests
+        withCredentials: true, 
       });
       return response.data;
     } catch (error: any) {
       console.error('Error fetching notes:', error);
-      // Pass the error to the rejected action
+    
       return rejectWithValue(error.response?.data || 'Failed to fetch notes');
     }
   }
@@ -56,7 +56,7 @@ const notesSlice = createSlice({
       })
       .addCase(fetchNotes.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.notes = action.payload; // Save notes to state
+        state.notes = action.payload; 
       })
       .addCase(fetchNotes.rejected, (state, action) => {
         state.status = 'failed';

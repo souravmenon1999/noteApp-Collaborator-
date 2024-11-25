@@ -10,14 +10,14 @@ const NoteList: React.FC = () => {
   const dispatch = useDispatch();
   const { getAccessTokenSilently } = useAuth0();
 
-  // Access notes and loading state from Redux store
+
   const { notes, status, error } = useSelector((state: RootState) => state.note);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = await getAccessTokenSilently();
-        dispatch(fetchNotes(token)); // Dispatch the async thunk to fetch notes
+        dispatch(fetchNotes(token)); 
       } catch (err) {
         console.error('Error fetching token:', err);
       }
@@ -36,7 +36,7 @@ const NoteList: React.FC = () => {
     return <div>Error: {error}</div>;
   }
 
-  // Ensure notes is an array before calling .map
+  
   const renderNotes = Array.isArray(notes) ? (
     notes.map((note) => (
       <li key={note.id}>

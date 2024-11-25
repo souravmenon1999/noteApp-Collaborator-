@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      {/* Navbar */}
+      
       <nav className="bg-gray-800 text-white p-4 flex items-center justify-between">
         <h1 className="text-lg font-bold">Welcome to the Home Page</h1>
         {isAuthenticated && (
@@ -21,11 +21,10 @@ const HomePage: React.FC = () => {
         )}
       </nav>
 
-      {/* Main Content */}
+      
       {isAuthenticated ? (
         <>
-          {/* Uncomment the ProfilePage component if needed */}
-          {/* <ProfilePage /> */}
+          
           <Editor />
         </>
       ) : (

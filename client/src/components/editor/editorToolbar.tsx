@@ -9,7 +9,7 @@ const EditorToolbar = () => {
   return (
     <div className="editor-toolbar">
       <button onClick={handleBoldClick}>Bold</button>
-      {/* Add other editor tools here (italic, underline, etc.) */}
+     
     </div>
   );
 };

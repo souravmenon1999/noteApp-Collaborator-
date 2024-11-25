@@ -6,6 +6,9 @@ import EditorToolbar from './editorToolbar';
 import { Note } from '../../types';
 import { ChatContainer } from '../chatBot/chatContainer';
 import ChatToggleButton from '../chatBot/chatToggleButton';
+import { ChatProvider } from '../../context/ChatContext';
+import ChatPopup from '../chatBot/ChatPopup';
+
 
 
 
@@ -73,7 +76,7 @@ const Editor = () => {
     </div>
   </div>
   
-
+<ChatPopup/>
     </>
 
     

@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
 import notesRoutes from "./routes/notesRoutes";
+import aiRoutes from "./routes/aiRoutes";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 // API Routes
 app.use('/notes', notesRoutes);
+app.use("/api/ai", aiRoutes);
 
 // MongoDB Connection
 connectDB();
